@@ -15,20 +15,20 @@
         echo "<div id='wrapper'>";
             foreach($productos as $producto) {
                 echo "<div class='producto'>";
-                    echo "<a href='{$producto['ruta']}?id={$producto['id']}'> <img src='{$producto['imagen']}' alt='{$producto['nombre']}'></a> "; // Le estamos añadiendo al enlace tanto la ruta del producto, como el id que tiene cada producto
-                    echo "<section class='info'>";
-                        echo "<p class='precio'>{$producto['precio']}</p>";
-                        echo "<i class='far fa-heart'></i>";
-                    echo "</section>";
-                    echo "<a href='{$producto['ruta']}?id={$producto['id']}' ><p class='nombre'>{$producto['nombre']}</p> </a>" ;
-                    echo "<p class='descripcion'>{$producto['descripcion']}</p>";
+                echo "<a href='{$producto['ruta']}?id={$producto['id']}'> <img src='{$producto['imagen']}' alt='{$producto['nombre']}'></a> "; // Le estamos añadiendo al enlace tanto la ruta del producto, como el id que tiene cada producto
+                echo "<section class='info'>";
+                echo "<p class='precio'>{$producto['precio']}</p>";
+                $claseCorazon = actualizarCorazon($producto['id']);
+                echo "<i class='fa-heart {$claseCorazon}' data-id='{$producto['id']}'></i>";
+                echo "</section>";
+                echo "<a href='{$producto['ruta']}?id={$producto['id']}' ><p class='nombre'>{$producto['nombre']}</p> </a>" ;
+                echo "<p class='descripcion'>{$producto['descripcion']}</p>";
                    
                 echo "</div>";
             }
         echo "</div>";
     }
     
-    //mostrarDatos($productos);
 
    
 
@@ -50,8 +50,9 @@
         echo "<div class = 'producto'>";
             echo "<img src='{$producto['imagen']}' alt='{$producto['nombre']}'> ";
             echo "<section class='info'>";
-                echo "<p class='precio'>{$producto['precio']}</p>";
-                echo "<i class='far fa-heart'></i>";
+            echo "<p class='precio'>{$producto['precio']}</p>";
+            $claseCorazon = actualizarCorazon($producto['id']);
+            echo "<i class='fa-heart {$claseCorazon}' data-id='{$producto['id']}'></i>";
             echo "</section>";
             echo "<p class='nombre'>{$producto['nombre']}</p>";
             echo  "<p class='descripcion'>{$producto['descripcion']}</p>";
@@ -60,14 +61,67 @@
     }
 
 
-    function contadorVisitas() {
+    function contadorVisitas($idProducto) {
+     
+        if(isset($_COOKIE['visitas'])) {
+            $vistos = json_decode($_COOKIE['visitas'], true) ; // Convertimos el valor de la cookie visitas a array asociativo. El valor true indica si queremos que el array resultante sea asociativo.
+            
+            if(isset($vistos[$idProducto])) {
+                $vistos[$idProducto]++;
+            }else{
+                $vistos[$idProducto] = 1;
+            }
 
+            $conversionString = json_encode($vistos);
+            setcookie("visitas", $conversionString, time() + 3600); 
 
-        if(!isset($_COOKIE['visitas'])){
-            setcookie("id", "visitas", time() + 3600);
         }else{
-
+            $vistos[$idProducto] = 1; // El primer valor del array será el primer producto que meta en la posición idProducto
+            $conversionString = json_encode($vistos); // Pasa el array asociativo a string json.
+            setcookie("visitas", $conversionString, time() + 3600); // Aqui creamos la cookie le pasamos el nombre, el valor y el tiempo de vida.
         }
+        
+    }
+
+    function mostrarVistos($productos) {
+
+        if(isset($_COOKIE['visitas']) && !empty($_COOKIE['visitas'])){
+            $visitados = json_decode($_COOKIE["visitas"],true);
+            echo "<h2>Vistos</h2>";
+            foreach($visitados as $posicion => $visitado){
+                    $producto = $productos[$posicion];
+                    echo "<div class='producto'>";
+                    echo "<a href='{$producto['ruta']}?id={$producto['id']}' ><img src='{$producto['imagen']}' alt='{$producto['nombre']}'></a>";
+                    echo "<p class='precio'>{$producto['precio']}</p>";
+                    echo "<a href='{$producto['ruta']}?id={$producto['id']}' class='nombre'>{$producto['nombre']}</a>";
+                    echo "</div>";
+            }
+        }
+    }
+
+    function mostrarFavoritos($productos){
+        if(isset($_COOKIE["favoritos"])){
+            $favoritos = json_decode($_COOKIE["favoritos"],true);
+            echo "<h2>Productos favoritos</h2>";
+            foreach($favoritos as $clave => $favorito){
+                echo "<article>";
+                $producto = $productos[$clave];
+                echo "<a href='{$producto['ruta']}?id={$producto['id']}'><img src='{$producto['imagen']}'></a>";
+                echo "<a href='{$producto['ruta']}?id={$producto['id']}'>{$producto['nombre']}</a>";
+                echo "<span>{$producto['precio']} €</span>";
+                echo "</article>";
+            }
+        }
+     }
+
+
+     function actualizarCorazon($idProducto){
+        $resultado = 'far';
+        if(isset($_COOKIE["favoritos"])){
+            $favoritos = json_decode($_COOKIE["favoritos"],true);
+            $resultado = array_key_exists($idProducto,$favoritos) ? "fas" : "far";
+        }
+        return $resultado;
     }
     
  

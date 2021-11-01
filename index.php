@@ -15,20 +15,41 @@
 </head>
 <body>  
     <main>
+        <article class="productos">
+            <?php
+                include_once 'funciones.php';
+                
+                if(!isset($_COOKIE["politica"])) {
+                    politicaCookies();
+                }else{
+                    mostrarDatos($productos);
+                }
+            ?>
+        </article>
+    
+
+
+
         <div class="politica_rechazada"> 
             <h1>Usted ha rechazado la política de cookies</h1>
             <p>Lo sentimos, usted ha rechazado las cookies, con los cual no podrá acceder al contenido de ésta página. En caso de querer visualizar la web, por favor acepte las cookies.</p>
             <input type="button" value="Volver atrás" class="volver">
         </div>
+        
+        <div class = "vistos">
+            <?php
+                mostrarVistos($productos);
+            ?>
+        </div>
 
-        <?php
-            include_once 'funciones.php';
-            if(!isset($_COOKIE["politica"])) {
-                politicaCookies();
-            }else{
-                mostrarDatos($productos);
-            }
-        ?>
+        <div class = "favoritos">
+            <?php
+                mostrarFavoritos($productos)
+            ?>
+        </div>
+
+
+        
 
     </main>
 

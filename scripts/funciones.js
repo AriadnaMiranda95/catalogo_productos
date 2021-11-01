@@ -28,7 +28,13 @@ $(document).ready(function() {
     $(".fa-heart").click(function(evento){
         evento.preventDefault();
         $(this).toggleClass("far fas");
+        $.post("favoritos.php", {id : this.dataset.id});
         
-    });
+    })
+
+
+
+
+
 
 })
