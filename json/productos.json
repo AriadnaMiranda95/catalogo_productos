@@ -1,0 +1,66 @@
+[
+    {
+        "id" : 0,
+        "nombre" : "SWEAR BY IT SHADOW",
+        "precio" : "39,90 €",
+        "descripcion" : "La paletas de sombras Swear by It Shadow Palette se ha convertido en uno de nuestros productos más deseados. No nos extraña, es tan increíble como parece. Apta para cualquier persona, cuenta con 40 tonos fríos y cálidos –desde un marrón chocolate o un verde azulado profundo a un naranja o un amarillo mostaza– con sorprendentes acabados mates, metalizados y satinados.",
+        "imagen": "img/producto1.jpg",
+        "ruta":"paleta.php"
+    },
+    {
+        "id" : 1,
+        "nombre" : "BRILLO DE LABIOS SHINE LOUD",
+        "precio" : "11,50 €",
+        "descripcion" : "Descubre nuestro Brillo de Labios de alta pigmentación #1 con hasta 16 horas de duración y sin marcas. Con una sola pasada, esta fórmula vegana, ligera y agradable ofrece un color vibrante con un acabado ultrabrillante y no pegajoso.",
+        "imagen": "img/producto2.jpg",
+        "ruta":"brillo.php"
+    },
+    {
+        "id" : 2,
+        "nombre" : "CAN´T STOP WON´T STOP",
+        "precio" : "16,90 €",
+        "descripcion" : "Ligera, resistente al agua y de larga duración, esta base de maquillaje de la gama Can't Stop Won't Stop aguanta impecable en tu rostro durante todo el día. Su fórmula líquida es muy favorecedora y no deja marca, además está disponible en 45 tonos diferentes para que nadie se quede sin la suya. ",
+        "imagen": "img/producto3.jpg",
+        "ruta":"base.php"
+    },
+    {
+        "id" : 3,
+        "nombre" : "MARSHMELLOW SMOOTHING",
+        "precio" : "16,95 €",
+        "descripcion" : "¡Descubre el efecto Marshmellow! Esta extraordinaria prebase 10 en 1 está enriquecida con un extracto suavizante de raíz de malvavisco que da lugar a 10 beneficios increíbles para prolongar la duración del maquillaje.",
+        "imagen": "img/producto4.jpg",
+        "ruta":"prebase.php"
+    },
+    {
+        "id" : 4,
+        "nombre" : " WORTH THE HYPE ",
+        "precio" : "9,90 €",
+        "descripcion" : "Confía en nosotros: si lo que buscas son unas pestañas más oscuras, más tupidas y con una belleza explosiva durante todo el día, Worth the Hype Volumizing & Lengthening Máscara de pestañas es lo que estabas buscando.",
+        "imagen": "img/producto5.jpg",
+        "ruta":"mascara.php"
+    },
+    {
+        "id" : 5,
+        "nombre" : " ULTIMATE FESTIVAL PALETTE",
+        "precio" : "19,90 €",
+        "descripcion" : "Crea tu propio lookazo de festival con estas sombras ultrapigmentadas en acabados mate y metalizados. Sombras compactas muy fáciles de difuminar, que van desde rosas intensos hasta morados eléctricos pasando por naranjas vibrantes. ",
+        "imagen": "img/producto6.jpg",
+        "ruta":"paletaFest.php"
+    },
+    {
+        "id" : 6,
+        "nombre" : " COLOUR CORRECTING PALETTE",
+        "precio" : "12,90 €",
+        "descripcion" : "Combina los colores para unificar tu tono de tu piel. Consigue un aspecto de cine con la nueva paleta de correctores Colour Correcting. Combina las 6 sombras correctoras para unificar tu tono, su fórmula ligera se extiende facilmente para conseguir un acabado super uniforme y una sensación suave y agradable en tu piel. ",
+        "imagen": "img/producto7.jpg",
+        "ruta":"correctores.php"
+    },
+    {
+        "id" : 7,
+        "nombre" : "CALIFORNIA BEAMIN´ FACE & BODY ",
+        "precio" : "10,90 €",
+        "descripcion" : "Impresiona con nuestros nuevos polvos bronceadores California Beamin’ Face & Body. Este bronceador de tamaño extra grande está disponible en seis tonos que harán que suban las temperaturas. Con una textura cremosa, nuestros polvos se aplican por rostro y cuerpo para dejar un bronceado cálido con un acabado satinado muy favorecedor.",
+        "imagen": "img/producto8.png",
+        "ruta":"bronceador.php"
+    }
+]
