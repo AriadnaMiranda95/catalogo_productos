@@ -11,14 +11,17 @@
     <title>MiShop</title>
 </head>
 <body>
-    <?php
+    <main class="individual">
 
-            include_once "funciones.php";
-            mostrarProducto($productos, $_REQUEST["id"]);
-            contadorVisitas($_REQUEST["id"]);
-        
+        <?php   
+                session_start();
+                include_once "funciones.php";
+                mostrarProducto($productos, $_REQUEST["id"]);
+                contadorVisitas($_REQUEST["id"]);
+        ?>
 
-    ?>
+    </main>
+    
 
 </body>
 </html>

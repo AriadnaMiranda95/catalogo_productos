@@ -9,21 +9,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="scripts/funciones.js"></script>
     
     <title>MiShop</title>
 </head>
-<body>  
+<body> 
+     <nav>
+          <h1>MiShop</h1>
+          <a href="carrito.php"><i class="fas fa-shopping-cart"></i></a>
+    </nav>
+    
+
     <main>
         <article class="productos">
             <?php
                 include_once 'funciones.php';
+                session_start();
+
+                var_dump($_SESSION);
+
+                
                 
                 if(!isset($_COOKIE["politica"])) {
                     politicaCookies();
                 }else{
                     mostrarDatos($productos);
                 }
+
+
+                
             ?>
         </article>
     

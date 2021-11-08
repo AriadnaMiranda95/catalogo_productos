@@ -19,16 +19,22 @@ $(document).ready(function() {
     $('#aceptar').click(function(evento) {
         evento.preventDefault();
         $.get('controlador.php').done(function(datos){
-            $("main").append(datos);
+            $(".productos").append(datos);
             $('.politicaCookies').css("display", "none");
+            location.reload();
         })
     })
 
 
     $(".fa-heart").click(function(evento){
-        evento.preventDefault();
         $(this).toggleClass("far fas");
         $.post("favoritos.php", {id : this.dataset.id});
+        
+    })
+
+    $(".fa-shopping-cart").click(function(evento){
+        $.post("carrito.php", { id : this.dataset.id });
+        
         
     })
 

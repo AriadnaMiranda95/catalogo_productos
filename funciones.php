@@ -12,7 +12,7 @@
    $productos = getDatos("json/productos.json");  
 
     function mostrarDatos($productos) {
-        echo "<div id='wrapper'>";
+        
             foreach($productos as $producto) {
                 echo "<div class='producto'>";
                 echo "<a href='{$producto['ruta']}?id={$producto['id']}'> <img src='{$producto['imagen']}' alt='{$producto['nombre']}'></a> "; // Le estamos añadiendo al enlace tanto la ruta del producto, como el id que tiene cada producto
@@ -21,12 +21,14 @@
                 $claseCorazon = actualizarCorazon($producto['id']);
                 echo "<i class='fa-heart {$claseCorazon}' data-id='{$producto['id']}'></i>";
                 echo "</section>";
-                echo "<a href='{$producto['ruta']}?id={$producto['id']}' ><p class='nombre'>{$producto['nombre']}</p> </a>" ;
+                echo "<a href='{$producto['ruta']}?id={$producto['id']}' >{$producto['nombre']} </a>" ;
                 echo "<p class='descripcion'>{$producto['descripcion']}</p>";
-                   
+                echo " <section>";
+                echo "<i class='fas fa-shopping-cart' data-id='{$producto['id']}'></i>";   
+                echo " </section>";
                 echo "</div>";
             }
-        echo "</div>";
+        
     }
     
 
@@ -36,8 +38,10 @@
         echo "<div class='politicaCookies'>";
             echo "<h1> Uso de cookies</h1>";
             echo "<p> Utilizamos cookies propias y de terceros para mejorar nuestros servicios y mostrarle publicidad relacionada con sus preferencas mediante el análisis de sus hábitos de navegación. Si continúa navegando, consideraremos que acepta su uso.</p>";
+            echo "<section class='botones'>";
             echo "<a href='index.php?politica=aceptada' id='aceptar'>Aceptar</a>";
             echo "<a href='#' id='rechazar'> Rechazar </a>";
+            echo "</section>";
         echo "</div>";
     }
 
@@ -90,7 +94,7 @@
             echo "<h2>Vistos</h2>";
             foreach($visitados as $posicion => $visitado){
                     $producto = $productos[$posicion];
-                    echo "<div class='producto'>";
+                    echo "<div class='productoVisto'>";
                     echo "<a href='{$producto['ruta']}?id={$producto['id']}' ><img src='{$producto['imagen']}' alt='{$producto['nombre']}'></a>";
                     echo "<p class='precio'>{$producto['precio']}</p>";
                     echo "<a href='{$producto['ruta']}?id={$producto['id']}' class='nombre'>{$producto['nombre']}</a>";
@@ -104,13 +108,14 @@
             $favoritos = json_decode($_COOKIE["favoritos"],true);
             echo "<h2>Productos favoritos</h2>";
             foreach($favoritos as $clave => $favorito){
-                echo "<article>";
+                echo "<article class='favoritos'>";
                 $producto = $productos[$clave];
                 echo "<a href='{$producto['ruta']}?id={$producto['id']}'><img src='{$producto['imagen']}'></a>";
                 echo "<a href='{$producto['ruta']}?id={$producto['id']}'>{$producto['nombre']}</a>";
-                echo "<span>{$producto['precio']} €</span>";
+                echo "<span>{$producto['precio']} </span>";
                 echo "</article>";
             }
+
         }
      }
 
@@ -123,7 +128,34 @@
         }
         return $resultado;
     }
+
+
+    function mostrarLogin(){
+        echo "<form action='{$_SERVER['PHP_SELF']}' method='post'>";
+        echo "<p>CORREO ELECTRÓNICO *</p>";
+        echo "<input type='text' name='usuario' placeholder='Direccion de email'>";
+        echo "<p>CONTRASEÑA *</p>";
+        echo "<input type='text' name='clave' placeholder='Minimo 6 caracteres'>";
+        echo "<input type='submit' value='ACCEDER'>";
+        echo "</form>";
+    }
+
+    function chequearLogin(){
+        if(isset($_REQUEST) && !empty($_REQUEST)){
+            if($_REQUEST['usuario'] == 'usuario' && $_REQUEST['clave'] == 'clave') {
+                $_SESSION['usuario'] = $_REQUEST['usuario'];
+                $_SESSION['login'] = true;
+
+            }else{
+                echo "Los datos introducidos son incorrectos";
+            }
+        }
+    }
+
+   function mostrarzx
     
- 
+    
+    
+    
   
 ?>
