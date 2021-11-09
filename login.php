@@ -10,6 +10,11 @@
         $usuario = $_REQUEST['usuario'];
         $clave = $_REQUEST['clave'];
 
+        
+
+
+        
+
         if($usuario == 'usuario' && $clave == 'clave') {
             $_SESSION['usuario'] = $usuario;
             $_SESSION['login'] = true;

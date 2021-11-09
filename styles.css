@@ -23,12 +23,12 @@ nav{
 }
 
 
-.productos{
+.productos, #wrapper{
 
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    min-width: 90%;
+    min-width: 70%;
     margin: 3em auto;
 
    
@@ -180,8 +180,25 @@ div.favoritos, .vistos{
     
 }
 
+#wrapper{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
 
-main > div.producto {
-   
 }
+
+#wapper> .producto{
+    display: flex;
+    
+}
+.producto>.cantidad{
+
+    width: 18%;
+    text-align: center;
+}
+
+
+/* main > div.producto {
+   
+} */
 

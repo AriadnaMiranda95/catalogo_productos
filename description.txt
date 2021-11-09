@@ -1,12 +1,2 @@
-producto 1 = Nombre = Paleta de sombras Swear By It Shadow Palette 
-ºPrecio=39,90 € Descripcion: La paletas de sombras Swear by It Shadow Palette 
-se ha convertido en uno de nuestros productos más deseados. No nos extraña, es tan increíble como parece. Apta para cualquier persona, cuenta con 40 
-tonos fríos y cálidos –desde un marrón chocolate o un verde azulado profundo a un naranja o un amarillo mostaza– con sorprendentes acabados mates, metalizados 
-y satinados. Una paleta que te asegurará conseguir el look perfecto para cualquier ocasión. Y si lo que buscas es sorprender a alguien con el mejor regalo, no 
-lo dudes, esta paleta encanta a todo el mundo. Desde maquilladores profesionales, hasta a aquellos que solo se maquillan para ir a una fiesta. ¡Una vez la pruebes,
- no querrás otra cosa! PRO TIP: Combina estas sombras aterciopeladas entre sí para crear un look perfecto. Además, no olvides aplicar antes tu primer de ojos HD para que 
- tu maquillaje dure todo el día. 
- ///////////////////////////////////
-producto 2 = Nombre = BRILLO DE LABIOS SHINE LOUD   
-precio
+To do :
 
