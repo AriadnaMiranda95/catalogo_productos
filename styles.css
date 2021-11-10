@@ -2,41 +2,34 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
+
 body{
     background-color: rgb(248, 230, 239);
     display: flex;
     flex-direction: column;
     max-width: 100%;
     text-align: center;
-    margin: 1em;
-    
-    
-    
+    margin: 1em;   
 }
 
-nav{
+header{
     display: flex;
     justify-content: space-between;
-   
 }
 
 
-.productos, #wrapper{
-
+.productos{
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     min-width: 70%;
     margin: 3em auto;
-
-   
 }
 
 
 
-.producto{
+.producto, .productoCarrito{
     background-color: rgb(236, 173, 223);
     display: flex;
     flex-flow: column nowrap;
@@ -45,7 +38,6 @@ nav{
     max-width: 300px;
     align-items: center;
     text-align: center;
-    
 }
 
  img{
@@ -61,63 +53,53 @@ img:hover{
     padding: .2em;
     margin: .3em .2em;
     justify-content: center;
-    font-weight: bold;
-    
-   
+    font-weight: bold; 
 }
 
 .precio{
-    margin-right: .5em;
-    
-
+    margin-right: .5em;  
 }
 
 .nombre{
     font-weight: bold;
     margin: 0 0 .7em .7em;
-
 }
 
 .descripcion{
     font-size: .9em;
     margin-left: .5em;
-
 }
 
 .politica_rechazada{
     border: black 1px solid;
     background-color: white;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;  
     max-width: 50%;
-    display: none;
-    
-}
-.politica_rechazada > h1{
-    margin-bottom: .3em;
-    
+    display: none;   
 }
 
-.politicaCookies{
+.politica_rechazada > h1{
+    margin-bottom: .3em;   
+}
+
+.politicaCookies, .sinProductos{
     background-color: rgb(255, 255, 255);
     display: flex;
     width: 50%;
     flex-direction: column;
-    margin: 13em auto;
+    margin: 7em auto;
     padding: 2em;
     border: rgb(240, 121, 220) .2em solid;
 }
 
-.botones{
-    
+.botones{ 
     display:flex;
     justify-content: center;
     margin: 1em auto;
 }
 
 #aceptar, #rechazar{
-
     background-color: rgb(241, 187, 234);
     padding: 1em;
     margin: 0.4em;
@@ -141,13 +123,8 @@ article.favoritos, .productoVisto{
    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    max-width: 300px;
-    
+    max-width: 300px;  
     text-align: center;
-    
-
-
-
 }
 
 div.favoritos, .vistos{
@@ -159,8 +136,6 @@ div.favoritos, .vistos{
     align-items: center;
     max-width: 90%;
     text-align: center;
- 
-
 }
 
 .vistos h2, .favoritos h2{
@@ -180,22 +155,69 @@ div.favoritos, .vistos{
     
 }
 
+.login{
+    background-color: rgb(236, 173, 223);
+    display: flex;
+    align-self: center;
+    flex-flow: column nowrap;
+    max-width: 300px;
+    padding: 2em;
+    margin: 7em 3em;
+    align-items: center;
+    text-align: center;
+    border-radius: .5em;
+}
+
+.login > p{
+    margin: 1em;
+    font-weight: bolder;
+    font-size: 1.4em;
+    color: white;
+}
+
+.login > form > input{
+    
+    margin: 0.7em ;
+    width: 20em;
+
+   
+}
+
+.login > form > p{
+    font-weight: bolder;
+  
+}
+
+.acceder{
+    background-color: rgb(219, 59, 198);
+    padding: 1em;
+    margin: 0.4em;
+    border: rgb(189, 187, 187) 1px solid;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border-radius: .5em;
+}
+
+.acceder:hover{
+    background-color: white;
+    color: black;
+}
+
 #wrapper{
     display: flex;
     flex-direction: row;
     align-self: center;
-
 }
 
 #wapper> .producto{
     display: flex;
-    
 }
-.producto>.cantidad{
 
+.producto>.cantidad{
     width: 18%;
     text-align: center;
 }
+
 
 
 /* main > div.producto {

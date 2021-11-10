@@ -1,21 +1,4 @@
-"<a href='index.php?politica=aceptada' id='aceptar'>Aceptar</a>"; 
-
-En este enlace estamos pasando valores en este caso 'index.php?politica=aceptada'
-estamos enviando por get la variable politica y el valor aceptada. 
-
--------------------------------------------------------------------------------------------------------
-
-if(isset($_REQUEST['politica']) && $_REQUEST['politica'] === 'aceptada'){
-        mostrarDatos($productos);
-    }
-
-Aquí lo que estamos haciendo es en primer lugar con el isset comprobamos si una variable
-está definida o es null. El $_REQUEST es una array asociativo por defecto que recoge el 
-contenido de los $_GET, $_POST y $_COOKIE. En esta condición lo que queremos decir es, si la
-variable no es nula, está definida y tiene contenido, si su contenido es igual a aceptar nos
-llama a la función de mostrarDatos. En el caso de que la primera opción no se cumpla, terminará ahí
-y no comprobará la siguiente condición. 
+- Funcion para sumar precio productos.
 
 
--------------------------------------------------------------------------------------------------------
 

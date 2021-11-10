@@ -7,9 +7,7 @@ $(document).ready(function() {
         evento.preventDefault();
         $('.politica_rechazada').css("display", "initial");
         $('.politicaCookies').css("display", "none");
-
     })
-
 
     $('.volver').click(function(evento) {
         $('.politicaCookies').css("display", "initial");
@@ -25,22 +23,9 @@ $(document).ready(function() {
         })
     })
 
-
-    $(".fa-heart").click(function(evento){
+    $(".fa-heart").click(function(evento) {
         $(this).toggleClass("far fas");
-        $.post("favoritos.php", {id : this.dataset.id});
-        
+        $.post("favoritos.php", {id : this.dataset.id});   
     })
-
-    $(".fa-shopping-cart").click(function(evento){
-        $.post("carrito.php", { id : this.dataset.id });
-        
-        
-    })
-
-
-
-
-
 
 })

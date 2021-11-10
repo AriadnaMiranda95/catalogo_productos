@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +12,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="scripts/funciones.js"></script>
-    
     <title>MiShop</title>
+
 </head>
-<body> 
-     <nav>
+<body>
+
+    <header>
           <h1>MiShop</h1>
-          <a href="carrito.php"><i class="fas fa-shopping-cart"></i></a>
-    </nav>
+          <?php if(isset($_COOKIE['politica'])): ?>
+          <a href="carrito.php"><i class="fas fa-shopping-cart" id="carrito"></i></a>
+          <?php endif ?>
+    </header>
     
 
     <main>
@@ -28,7 +32,6 @@
                 session_start();
 
                // var_dump($_SESSION);
-
                 
                 if(!isset($_COOKIE["politica"])) {
                     politicaCookies();

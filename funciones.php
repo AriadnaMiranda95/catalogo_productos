@@ -132,13 +132,16 @@
 
 
     function mostrarLogin() {
+        echo "<div class='login'>";
+        echo "<p>LOGIN</p>";
         echo "<form action='{$_SERVER['PHP_SELF']}' method='post'>";
         echo "<p>CORREO ELECTRÓNICO *</p>";
         echo "<input type='text' name='usuario' placeholder='Direccion de email'>";
         echo "<p>CONTRASEÑA *</p>";
-        echo "<input type='text' name='clave' placeholder='Minimo 6 caracteres'>";
-        echo "<input type='submit' value='ACCEDER'>";
+        echo "<input type='password' name='clave' placeholder='Minimo 6 caracteres'>";
+        echo "<input type='submit' value='ACCEDER' class='acceder'>";
         echo "</form>";
+        echo "</div>";
     }
 
     function chequearLogin() {
@@ -153,12 +156,12 @@
         }
     }
 
-    function productosCarrito($productos) {
+    function mostrarProductosCarrito($productos) {
        if(isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
-           // echo "<div id='wrapper'>";
+           
             foreach($_SESSION['carrito'] as $posicion => $productoCarrito) {
                
-                echo "<div class='producto'>";
+                echo "<div class='productoCarrito'>";
                 echo "<img src='{$productos[$posicion]['imagen']}' id='{$productos[$posicion]['id']}'>";
                 echo "<section class='info'>";
                 echo "<p class='precio'> {$productos[$posicion]['precio']} </p>";
@@ -167,18 +170,29 @@
                 echo "</section>";
                 echo "<p class='nombre'>{$productos[$posicion]['nombre']}</p>";
                 echo "<input type='number' name='cantidad' class='cantidad' min='1'>";
+                echo "<input type='button' value='Eliminar' class='eliminarProducto' data-id={$posicion}>";
                 echo "</div>";
                 
 
-          
-
-         
-                
             }
-           // echo "</div>";
 
+            echo "<div class='precioTotal'>";
+            echo "<p>Subtotal: </p>";
+            echo "<p>Gastos de envío: </p>";
+            echo "<p>TOTAL: </p>";
+            echo "</div>";
+            echo "<input type='button' value='Tramitar compra' class='tramitarCompra'>";
+            echo "<input type='button' value='Eliminar todo' class='eliminarTodo'>";
+
+           
+       }else{
+           echo "<div class='sinProductos'>";
+           echo "<p> Aún no has añadido ningún producto al carrito </p>";
+           echo "</div>";
        }
     }
+
+
 
   
     
