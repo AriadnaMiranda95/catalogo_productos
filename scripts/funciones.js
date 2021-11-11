@@ -30,4 +30,8 @@ $(document).ready(function() {
         $.post("carrito.php", { id : this.dataset.id });
     })
 
+
+
 })
+
+

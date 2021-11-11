@@ -169,7 +169,7 @@
                 echo "<i class='fa-heart {$claseCorazon}' data-id='{$productos[$posicion]['id']}'></i>";
                 echo "</section>";
                 echo "<p class='nombre'>{$productos[$posicion]['nombre']}</p>";
-                echo "<input type='number' name='cantidad' class='cantidad' min='1'>";
+                echo "<input type='number' class='cantidad' min='1' value='1'>";
                 echo "<input type='button' value='Eliminar' class='eliminarProducto' data-id={$posicion}>";
                 echo "</div>";
                 
@@ -177,9 +177,9 @@
             }
 
             echo "<div class='precioTotal'>";
-            echo "<p>Subtotal: </p>";
-            echo "<p>Gastos de envío: </p>";
-            echo "<p>TOTAL: </p>";
+            echo "<p>Subtotal: <span class='subtotal'></span> </p>";
+            echo "<p>Gastos de envío: <span class='gastosEnvio'></span> </p>";
+            echo "<p>TOTAL: <span class='total'></span> </p>";
             echo "</div>";
             echo "<input type='button' value='Tramitar compra' class='tramitarCompra'>";
             echo "<input type='button' value='Eliminar todo' class='eliminarTodo'>";
