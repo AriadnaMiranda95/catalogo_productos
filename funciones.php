@@ -151,7 +151,7 @@
                 $_SESSION['login'] = true;
 
             }else{
-                echo "Los datos introducidos son incorrectos";
+                echo "<p> Los datos introducidos son incorrectos </p>";
             }
         }
     }

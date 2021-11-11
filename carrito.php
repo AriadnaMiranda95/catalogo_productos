@@ -54,6 +54,7 @@
    if(isset($_REQUEST['borrarTodo'])){
     unset($_SESSION['carrito']);
 }
+ 
 
   
 

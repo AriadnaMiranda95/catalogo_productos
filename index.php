@@ -39,6 +39,9 @@
                     mostrarDatos($productos);
                 }
 
+                if(isset($_SESSION)){
+                    var_dump($_SESSION);
+                }
 
                 
             ?>

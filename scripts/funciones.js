@@ -1,6 +1,4 @@
 
-
-
 $(document).ready(function() {
 
     $('#rechazar').click(function(evento) { // Pasamos por parámetros el evento para prevenir que se recargue la página. 
@@ -26,6 +24,10 @@ $(document).ready(function() {
     $(".fa-heart").click(function(evento) {
         $(this).toggleClass("far fas");
         $.post("favoritos.php", {id : this.dataset.id});   
+    })
+    
+    $(".fa-shopping-cart").click(function(evento){
+        $.post("carrito.php", { id : this.dataset.id });
     })
 
 })
