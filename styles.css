@@ -219,7 +219,9 @@ div.favoritos, .vistos{
 }
 
 
-
+.volver:hover{
+ background-color: hotpink;
+}
 /* main > div.producto {
    
 } */

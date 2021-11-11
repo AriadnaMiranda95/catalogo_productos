@@ -164,7 +164,7 @@
                 echo "<div class='productoCarrito'>";
                 echo "<img src='{$productos[$posicion]['imagen']}' id='{$productos[$posicion]['id']}'>";
                 echo "<section class='info'>";
-                echo "<p class='precio'> {$productos[$posicion]['precio']} </p>";
+                echo "<p class='precio' data-precio={$productos[$posicion]['precio']}> {$productos[$posicion]['precio']} </p>";
                 $claseCorazon = actualizarCorazon($productos[$posicion]['id']);            
                 echo "<i class='fa-heart {$claseCorazon}' data-id='{$productos[$posicion]['id']}'></i>";
                 echo "</section>";
@@ -187,7 +187,8 @@
            
        }else{
            echo "<div class='sinProductos'>";
-           echo "<p> Aún no has añadido ningún producto al carrito </p>";
+           echo "<p> Aún no has añadido ningún producto al carrito.</p>";
+           echo "<a href='index.php' class='volver'><p> Seguir comprando. </p></a>";
            echo "</div>";
        }
     }
