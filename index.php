@@ -36,6 +36,7 @@
                 if(!isset($_COOKIE["politica"])) {
                     politicaCookies();
                 }else{
+                    
                     mostrarDatos($productos);
                 }
 

@@ -1,0 +1,16 @@
+[
+    {
+        "via" : "avenida" 
+    
+    },
+    {
+        "via" : "calle" 
+    },
+    {
+        "via" : "carretera" 
+    },
+    {
+        "via" : "otros" 
+    }
+
+]

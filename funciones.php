@@ -8,12 +8,14 @@
         return $datosArray;
     }
     
-    
-   $productos = getDatos("json/productos.json");  
+    $productos = getDatos("json/productos.json");  
+    $paises =  getDatos("json/paises.json");
+    $provincias = getDatos("json/provincias.json");
+    $tiposVia = getDatos("json/vias.json");
 
     function mostrarDatos($productos) {
         
-            foreach($productos as $producto) {
+            foreach($productos as $producto){
                 echo "<div class='producto'>";
                 echo "<a href='{$producto['ruta']}?id={$producto['id']}'> <img src='{$producto['imagen']}' alt='{$producto['nombre']}'></a> "; // Le estamos añadiendo al enlace tanto la ruta del producto, como el id que tiene cada producto
                 echo "<section class='info'>";
@@ -130,6 +132,7 @@
         return $resultado;
     }
 
+// LOGIN DE LA PÁGINA
 
     function mostrarLogin() {
         echo "<div class='login'>";
@@ -156,6 +159,10 @@
         }
     }
 
+
+
+// FUNCIONES CARRITO
+
     function mostrarProductosCarrito($productos) {
        if(isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
            
@@ -181,7 +188,7 @@
             echo "<p>Gastos de envío: <span class='gastosEnvio'></span> </p>";
             echo "<p>TOTAL: <span class='total'></span> </p>";
             echo "</div>";
-            echo "<input type='button' value='Tramitar compra' class='tramitarCompra'>";
+            echo "<a href='tramitar.php'><input type='button' value='Tramitar compra' class='tramitarCompra'></a>";
             echo "<input type='button' value='Eliminar todo' class='eliminarTodo'>";
 
            
@@ -193,12 +200,156 @@
        }
     }
 
+    // FUNCIONES TRAMITES
+
+    $DATOS_OBLIGATORIOS = [
+        "nombre" => "",
+        "apellido1" => "",
+        "apellido2" => "",
+        "fijo" => "",
+        "indicación" => "",
+        "paises" => getDatos("./json/paises.json"),
+        "provincias" => getDatos("./json/provincias.json"),
+        "localidad" => "",
+        "codigo_postal" => "",
+        "via" => ["avenida","calle","carretera","otros"],
+        "nombre_via" => ""
+    ];
 
 
-  
+    function crearSelect($array,  $idOpcion,  $nombreOpcion, $nombreSelect, $label){
+        echo "<section>";
+        echo "<label for='{$nombreSelect}'>{$label}*</label>";
+        echo "<select name='{$nombreSelect}' id='{$nombreSelect}'>";
+        foreach($array as $dato) { 
+            echo "<option value='{$dato[$idOpcion]}'> {$dato[$nombreOpcion]}</option>"; 
+        }
+        echo "</select>";
+        echo "</section>";
+    }
+
+    function mostrarFormulario($paises, $provincias, $tiposVia){
+        echo "<form action='{$_SERVER['PHP_SELF']}' method='POST'>";
+        echo "<h1 class='enviarDomicilio'> ENVIAR A DOMICILIO </h1>";
+        echo "<h2 class='personaContacto'> Persona de contacto </h2>";
+        echo "<p class='apartado'>Nombre (*)</p>";
+        echo "<input type='text' name='nombre' id='nombre' value='".comprobarSiExiste('nombre') ."'required>";
+        echo "<p class='apartado'>Primer apellido (*)</p>";
+        echo "<input type='text' name='apellido1' id='apellido1' value='".comprobarSiExiste('apellido1') ."'required>";
+        echo "<p class='apartado'>Segundo apellido (*)</p>";
+        echo "<input type='text' name='apellido2' id='apellido2' value='".comprobarSiExiste('apellido2') ."'required>";
+        echo "<p class='apartado'>Teléfono fijo (*) </p>";
+        echo "<input type='text' name='fijo' id='fijo' value='".comprobarSiExiste('fijo') ."' required>";
+        echo "<p class='apartado'>Indicaciones (*) </p>";
+        echo "<input type='text' name ='indicacion' value='".comprobarSiExiste('indicacion') ."' required>";
+        echo "<h2 class='datosPersonales'> Datos personales </h2>";
+        crearSelect ($paises,'paises', 'name_es', 'code','País');
+        crearSelect($provincias,'provincias', 'nm' , 'id' ,'Provincia');
+        echo "<p class='apartado'>Localidad (*)</p>";
+        echo "<input type='text' name='localidad' id='localidad' value='".comprobarSiExiste('localidad') ."'required>";
+        echo "<p class='apartado'>Codigo postal (*)</p>";
+        echo "<input type='text' name='codigo_postal' id='codigo_postal' value='".comprobarSiExiste('codigo_postal') ."' required>";
+        crearSelect($tiposVia, 'vias', 'via', 'via', 'Tipo de vía');
+        echo "<p class='apartado'>Nombre de vía (*) </p>";
+        echo "<input type='text' name='nombre_via' id='nombre_via' value='".comprobarSiExiste('nombre_via') ."' required>";
+        echo "<input type='button' value='Volver' class='volver' >";
+        echo "<input type='submit' value='Comprar' name='comprar' class='comprarProducto'>";
+        echo "</fieldset></form>";
+        
+       
+
+    }
+
+
+
     
+    // VALIDAR FORMULARIO DE TRAMITES
     
+    function comprobarCamposVacios($DATOS_OBLIGATORIOS) {
+        $camposVacios = [];
+        $datosFormulario = $_POST;
+
+        foreach($DATOS_OBLIGATORIOS as $posicion => $dato) {
+            if(!array_key_exists($posicion, $datosFormulario) || empty($datosFormulario[$posicion])) {
+                array_push($camposVacios,"<p class='error'>El campo <span>{$posicion}</span> está vacío</p>");
+            }
+        }
+        return $camposVacios;
+    }
+
+
+    function comprobarString($texto,$minLength,$maxLength) {
+
+        if(strlen($texto) < $minLength || strlen($texto) > $maxLength) {
+            return false;
+        }
+        for($i = 0 ; $i < strlen($texto); $i++) {
+            if(ctype_digit($texto[$i])){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function comprobarSiExiste($nombre){
+        $comprobado =  isset($_REQUEST[$nombre]) ? $_REQUEST[$nombre] : '';
+        return $comprobado;
+    }
     
+    function comprobarSelect($nombre, $condicion, $valor, $valor2){
+        $resultado =  isset($_REQUEST[$nombre]) && $_REQUEST[$nombre] == $condicion ? $valor : $valor2;
+        return $resultado;
+    }
     
+    function comprobarDatosObligatorios($DATOS_OBLIGATORIOS) {
+        $camposErroneos = [];
+        foreach($_POST as $clave => $dato){
+            $dato = htmlspecialchars(trim($dato));
+            switch($clave){
+                case "nombre":
+                    comprobarString($dato,3,30) ? ' ' : array_push($camposErroneos,"<p class='error'>Introduce un <span>nombre</span> válido</p>");
+                    break;
+                case "apellido1":
+                    comprobarString($dato,3,30) ? ' ' : array_push($camposErroneos,"<p class='error'>Introduce un <span>apellido</span> válido</p>");
+                    break;
+                case "apellido2":
+                    comprobarString($dato,3,30) ? ' ' : array_push($camposErroneos,"<p class='error'>Introduce un <span>apellido</span> válido</p>");
+                    break;
+                case "fijo":
+                    is_numeric($dato) && strlen($dato) >= 7 && strlen($dato) <= 15 ? '' :array_push($camposErroneos,"<p class='error'>Introduce un <span>número de teléfono</span> correcto</p>");
+                    break;
+                case "localidad":
+                    comprobarString($dato,5,50) ? ' ' : array_push($camposErroneos,"<p class='error'>Introduce una <span>localidad</span> válida</p>");
+                    break;
+                case "codigo_postal" : 
+                    is_numeric($dato) && ctype_digit($dato) && strlen($dato) === 5 ? ' ' : array_push($camposErroneos,"<p class='error'>Introduce un <span>código postal</span> válido</p>");
+                    break;
+                case "indicacion" : 
+                    comprobarString($dato, 1, 20) ? '' : array_push($camposErroneos ,"<p class='error'>Introduce un <span>complemento</span> correcto</p>");
+                    break;
+            }
+        }  
+        return $camposErroneos; 
+    }
+    
+    function mostrarCamposErroneos($array){
+        foreach($array as $dato){
+            echo $dato;
+        }
+    }
+
+    function crearSeccion($titulo,$contenidos){
+        echo "<section>";
+        echo "<h3>{$titulo}</h3>";
+        foreach($contenidos as $contenido){
+            echo $contenido;
+        }
+        echo "</section>";
+    
+    }
+
+                     
+
+                    
   
 ?>
