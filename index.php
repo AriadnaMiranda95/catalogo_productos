@@ -36,12 +36,11 @@
                 if(!isset($_COOKIE["politica"])) {
                     politicaCookies();
                 }else{
+                    
                     mostrarDatos($productos);
                 }
 
-                if(isset($_SESSION)){
-                    var_dump($_SESSION);
-                }
+                
 
                 
             ?>

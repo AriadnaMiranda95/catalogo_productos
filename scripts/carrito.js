@@ -17,7 +17,13 @@ $(document).ready(function(){
     $('.eliminarTodo').click(function(evento){
         $.post("carrito.php", { borrarTodo : true})
         location.reload();
-    })   
+    })
+    
+    $('.cantidad').change(function(evento){
+
+        calcularTotal();
+
+    })
     
     calcularTotal();
 
@@ -33,15 +39,13 @@ function calcularTotal(){
   productosCarrito.forEach( producto =>{
      let cantidad = parseInt((producto.querySelector('.cantidad')).value);
      let precio = parseInt((producto.querySelector('.precio')).dataset.precio);
-     console.log(typeof cantidad);
-     console.log(typeof precio);
-
+     
     cuenta.subTotal += (cantidad*precio);
       
     
   })
 
-        if(cuenta.gastosEnvio >= 500){
+        if(cuenta.subTotal >= 500){
             cuenta.gastosEnvio = 0;
         }else{
             cuenta.gastosEnvio = (cuenta.subTotal*0.1);
@@ -50,7 +54,7 @@ function calcularTotal(){
 
 
         subTotal.innerHTML = cuenta.subTotal;
-        gastosEnvio.innerHTML = cuenta.gastosEnvio;
+        gastosEnvio.innerHTML = (cuenta.gastosEnvio).toFixed(2);
         total.innerHTML = cuenta.total;
   
   
