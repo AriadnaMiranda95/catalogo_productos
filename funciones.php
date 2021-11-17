@@ -263,6 +263,19 @@
     }
 
 
+    $DATOS_OBLIGATORIOS = [
+        "nombre" => "",
+        "apellido1" => "",
+        "apellido2" => "",
+        "fijo" => "",
+        "indicación" => "",
+        "paises" => getDatos("./json/paises.json"),
+        "provincias" => getDatos("./json/provincias.json"),
+        "localidad" => "",
+        "codigo_postal" => "",
+        "via" => ["avenida","calle","carretera","otros"],
+        "nombre_via" => ""
+    ];
 
     
     // VALIDAR FORMULARIO DE TRAMITES
@@ -353,7 +366,17 @@
     }
 
     function cestaResumen($productos){
-        
+        if(isset($_SESSION["productoCarrito"])){
+            $cesta = $_SESSION['productosCarrito'];
+            echo "<div class='cesta'>";
+            echo "<h1> Cesta de productos</h1>";
+            foreach($cesta as $idProducto){
+                echo "<img src='{$productos[$idProducto]['imagen']}'>";
+                echo "<p>{$productos[$idProducto]['nombre']}</p>";
+                echo "<p>{$productos[$idProducto]['precio']}</p>";
+            }
+
+        }
 
     }
 
