@@ -118,6 +118,9 @@ a{
 a:hover{
     color: white;
 }
+i:hover{
+    color: white;
+}
 
 article.favoritos, .productoVisto{
    display: flex;

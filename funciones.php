@@ -1,6 +1,7 @@
 <?php
   
   //politicaCookies();
+  session_start();
 
     function getDatos($fichero) {
         $datosJson = file_get_contents($fichero); // Convierte un fichero completo a una cadena de texto.
@@ -26,7 +27,7 @@
                 echo "<a href='{$producto['ruta']}?id={$producto['id']}' >{$producto['nombre']} </a>" ;
                 echo "<p class='descripcion'>{$producto['descripcion']}</p>";
                 echo " <section>";
-                echo "<a href='#'><i class='fas fa-shopping-cart' data-id='{$producto['id']}'></i></a>";   
+                echo "<i class='fas fa-shopping-cart' data-id='{$producto['id']}'></i>";   
                 echo " </section>";
                 echo "</div>";
             }
@@ -202,19 +203,6 @@
 
     // FUNCIONES TRAMITES
 
-    $DATOS_OBLIGATORIOS = [
-        "nombre" => "",
-        "apellido1" => "",
-        "apellido2" => "",
-        "fijo" => "",
-        "indicación" => "",
-        "paises" => getDatos("./json/paises.json"),
-        "provincias" => getDatos("./json/provincias.json"),
-        "localidad" => "",
-        "codigo_postal" => "",
-        "via" => ["avenida","calle","carretera","otros"],
-        "nombre_via" => ""
-    ];
 
 
     function crearSelect($array,  $idOpcion,  $nombreOpcion, $nombreSelect, $label){
@@ -245,7 +233,7 @@
         echo "<input type='text' name ='indicacion' value='".comprobarSiExiste('indicacion') ."' required>";
         echo "</div>";
         echo "<h2 class='datosPersonales'> Datos personales </h2>";
-        crearSelect ($paises,'paises', 'name_es', 'paises','País');
+        crearSelect ($paises,'code', 'name_es', 'paises','País');
         crearSelect($provincias,'provincias', 'nm' , 'provincias' ,'Provincia');
         echo "<p class='apartado'>Localidad (*)</p>";
         echo "<input type='text' name='localidad' id='localidad' value='".comprobarSiExiste('localidad') ."'required>";
@@ -262,20 +250,6 @@
 
     }
 
-
-    $DATOS_OBLIGATORIOS = [
-        "nombre" => "",
-        "apellido1" => "",
-        "apellido2" => "",
-        "fijo" => "",
-        "indicación" => "",
-        "paises" => getDatos("./json/paises.json"),
-        "provincias" => getDatos("./json/provincias.json"),
-        "localidad" => "",
-        "codigo_postal" => "",
-        "via" => ["avenida","calle","carretera","otros"],
-        "nombre_via" => ""
-    ];
 
     
     // VALIDAR FORMULARIO DE TRAMITES
@@ -366,16 +340,15 @@
     }
 
     function cestaResumen($productos){
-        if(isset($_SESSION["productoCarrito"])){
-            $cesta = $_SESSION['productosCarrito'];
+        if(isset($_SESSION["carrito"])){
+            $cesta = $_SESSION['carrito'];
             echo "<div class='cesta'>";
             echo "<h1> Cesta de productos</h1>";
             foreach($cesta as $idProducto){
                 echo "<img src='{$productos[$idProducto]['imagen']}'>";
                 echo "<p>{$productos[$idProducto]['nombre']}</p>";
-                echo "<p>{$productos[$idProducto]['precio']}</p>";
             }
-
+            echo "</div>";
         }
 
     }
