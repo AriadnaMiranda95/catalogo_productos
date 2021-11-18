@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php
-            session_start();
+          
             include_once "funciones.php";
             mostrarProducto($productos, $_REQUEST["id"]);
             contadorVisitas($_REQUEST["id"]);

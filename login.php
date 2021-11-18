@@ -12,9 +12,6 @@
 
         
 
-
-        
-
         if($usuario == 'usuario' && $clave == 'clave') {
             $_SESSION['usuario'] = $usuario;
             $_SESSION['login'] = true;

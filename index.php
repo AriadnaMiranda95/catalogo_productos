@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    <?php       include_once 'funciones.php';  ?>
 
     <header>
           <h1>MiShop</h1>
@@ -28,10 +29,8 @@
     <main>
         <article class="productos">
             <?php
-                include_once 'funciones.php';
-                session_start();
-
-               // var_dump($_SESSION);
+               // include_once 'funciones.php';
+                
                 
                 if(!isset($_COOKIE["politica"])) {
                     politicaCookies();

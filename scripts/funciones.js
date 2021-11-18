@@ -28,6 +28,7 @@ $(document).ready(function() {
     
     $(".fa-shopping-cart").click(function(evento){
         $.post("carrito.php", { id : this.dataset.id });
+        console.log("llega");
     })
 
 

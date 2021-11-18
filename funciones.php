@@ -1,7 +1,7 @@
 <?php
   
   //politicaCookies();
-  session_start();
+    session_start();
 
     function getDatos($fichero) {
         $datosJson = file_get_contents($fichero); // Convierte un fichero completo a una cadena de texto.
