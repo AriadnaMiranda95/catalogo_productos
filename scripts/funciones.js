@@ -31,6 +31,13 @@ $(document).ready(function() {
         console.log("llega");
     })
 
+    $("#logOut").click(function(){
+        $.post("logout.php", {logOut: true}).done(function(data){
+            location.reload();
+        })
+        
+    })
+
 
 
 })

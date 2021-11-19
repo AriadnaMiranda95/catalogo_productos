@@ -23,6 +23,14 @@
           <?php if(isset($_COOKIE['politica'])): ?>
           <a href="carrito.php"><i class="fas fa-shopping-cart" id="carrito"></i></a>
           <?php endif ?>
+          <?php
+          
+          if(isset($_SESSION["login"])){
+              echo "<a id='logOut'>Logout</a>";
+          }
+          ?>
+          
+
     </header>
     
 
