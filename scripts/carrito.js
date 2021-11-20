@@ -40,10 +40,12 @@ function calcularTotal(){
      let cantidad = parseInt((producto.querySelector('.cantidad')).value);
      let precio = parseInt((producto.querySelector('.precio')).dataset.precio);
      
-    cuenta.subTotal += (cantidad*precio);
+    precioInicio += (cantidad*precio);
       
     
   })
+
+  cuenta.subTotal = precioInicio;
 
         if(cuenta.subTotal >= 500){
             cuenta.gastosEnvio = 0;

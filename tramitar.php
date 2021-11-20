@@ -10,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
+    <main>
    
 <?php
 
@@ -29,7 +30,6 @@ $DATOS_OBLIGATORIOS = [
     "nombre_via" => ""
 ];
 
-var_dump($_SESSION);
 
 
 if (isset($_POST) && !empty($_POST)){
@@ -38,9 +38,11 @@ if (isset($_POST) && !empty($_POST)){
         cestaResumen($productos);
          // si entra en esta condición, nos muestra el formulario otra vez para rellenarlos.
         $camposVacios = comprobarCamposVacios($DATOS_OBLIGATORIOS); // metemos dentro de una variable el array que devuelve la función.
+        echo "<div class='errores'>";
         foreach($camposVacios as $campo){ // Recorremos el array que devuelve la función y comprobamos los campos.
             echo $campo;
         }
+        echo "</div>";
 
     }else{
 
@@ -48,9 +50,11 @@ if (isset($_POST) && !empty($_POST)){
             mostrarFormulario($paises, $provincias, $tiposVia);
             cestaResumen($productos);
             $datosObligatorios = comprobarDatosObligatorios($DATOS_OBLIGATORIOS);
+            echo "<div class='errores'>";
             foreach($datosObligatorios as $dato){
                 echo $dato;
             }
+            echo "</div>";
         }else{
             compraFinalizada();
         }
@@ -69,6 +73,7 @@ if (isset($_POST) && !empty($_POST)){
 
 }
 ?>
+</main>
     
 </body>
 </html>

@@ -183,7 +183,7 @@
                 
 
             }
-
+            echo "<article class='resumen'>";
             echo "<div class='precioTotal'>";
             echo "<p>Subtotal: <span class='subtotal'></span> </p>";
             echo "<p>Gastos de envío: <span class='gastosEnvio'></span> </p>";
@@ -191,6 +191,7 @@
             echo "</div>";
             echo "<a href='tramitar.php'><input type='button' value='Tramitar compra' class='tramitarCompra'></a>";
             echo "<input type='button' value='Eliminar todo' class='eliminarTodo'>";
+            echo "</article>";
 
            
        }else{
@@ -219,32 +220,32 @@
     function mostrarFormulario($paises, $provincias, $tiposVia){
         echo "<form action='{$_SERVER['PHP_SELF']}' method='POST'>";
         echo "<h1 class='enviarDomicilio'> ENVIAR A DOMICILIO </h1>";
-        echo "<h2 class='personaContacto'> Persona de contacto </h2>";
-        echo "<div class='datosContacto'>";
-        echo "<p class='apartado'>Nombre (*)</p>";
-        echo "<input type='text' name='nombre' id='nombre' value='".comprobarSiExiste('nombre') ."'required>";
-        echo "<p class='apartado'>Primer apellido (*)</p>";
-        echo "<input type='text' name='apellido1' id='apellido1' value='".comprobarSiExiste('apellido1') ."'required>";
-        echo "<p class='apartado'>Segundo apellido (*)</p>";
-        echo "<input type='text' name='apellido2' id='apellido2' value='".comprobarSiExiste('apellido2') ."'required>";
-        echo "<p class='apartado'>Teléfono fijo (*) </p>";
-        echo "<input type='text' name='fijo' id='fijo' value='".comprobarSiExiste('fijo') ."' required>";
-        echo "<p class='apartado'>Indicaciones (*) </p>";
-        echo "<input type='text' name ='indicacion' value='".comprobarSiExiste('indicacion') ."' required>";
-        echo "</div>";
-        echo "<h2 class='datosPersonales'> Datos personales </h2>";
+        echo "<fieldset>";
+        echo "<legend class='personaContacto'> Persona de contacto </legend>";
+        echo "<p><label class='apartado'>Nombre (*)</label>";
+        echo "<input type='text' name='nombre' id='nombre' value='".comprobarSiExiste('nombre') ."'required></p>";
+        echo "<p><label class='apartado'>Primer apellido (*)</label>";
+        echo "<input type='text' name='apellido1' id='apellido1' value='".comprobarSiExiste('apellido1') ."'required></p>";
+        echo "<p><label class='apartado'>Segundo apellido (*)</label>";
+        echo "<input type='text' name='apellido2' id='apellido2' value='".comprobarSiExiste('apellido2') ."'required></p>";
+        echo "<p><label class='apartado'>Teléfono fijo (*) </label>";
+        echo "<input type='text' name='fijo' id='fijo' value='".comprobarSiExiste('fijo') ."' required></p>";
+        echo "<p><label class='apartado'>Indicaciones </label>";
+        echo "<textarea name ='indicacion' value='".comprobarSiExiste('indicacion') ."'></textarea></p>";
+        echo "</fieldset>";
+        echo "<fieldset><legend class='datosPersonales'> Datos personales </legend>";
         crearSelect ($paises,'code', 'name_es', 'paises','País');
         crearSelect($provincias,'provincias', 'nm' , 'provincias' ,'Provincia');
-        echo "<p class='apartado'>Localidad (*)</p>";
-        echo "<input type='text' name='localidad' id='localidad' value='".comprobarSiExiste('localidad') ."'required>";
-        echo "<p class='apartado'>Codigo postal (*)</p>";
-        echo "<input type='text' name='codigo_postal' id='codigo_postal' value='".comprobarSiExiste('codigo_postal') ."' required>";
+        echo "<p><label class='apartado'>Localidad (*)</label>";
+        echo "<input type='text' name='localidad' id='localidad' value='".comprobarSiExiste('localidad') ."'required</p>";
+        echo "<p><label class='apartado'>Codigo postal (*)</label>";
+        echo "<input type='text' name='codigo_postal' id='codigo_postal' value='".comprobarSiExiste('codigo_postal') ."' required></p>";
         crearSelect($tiposVia, 'vias', 'via', 'via', 'Tipo de vía');
-        echo "<p class='apartado'>Nombre de vía (*) </p>";
-        echo "<input type='text' name='nombre_via' id='nombre_via' value='".comprobarSiExiste('nombre_via') ."' required>";
-        echo "<a href='carrito.php'><input type='button' value='Volver' class='volver' ></a>";
+        echo "<p><label class='apartado'>Nombre de vía (*) </label>";
+        echo "<input type='text' name='nombre_via' id='nombre_via' value='".comprobarSiExiste('nombre_via') ."' required></p>";
+        echo "<section class='botones'><a href='carrito.php'><input type='button' value='Volver' class='volver' ></a>";
         echo "<input type='submit' value='Comprar' name='comprar' class='comprarProducto'>";
-        echo "</fieldset></form>";
+        echo "</section></fieldset></form>";
         
        
 
@@ -345,8 +346,10 @@
             echo "<div class='cesta'>";
             echo "<h1> Cesta de productos</h1>";
             foreach($cesta as $idProducto){
+                echo "<article>";
                 echo "<img src='{$productos[$idProducto]['imagen']}'>";
                 echo "<p>{$productos[$idProducto]['nombre']}</p>";
+                echo "</article>";
             }
             echo "</div>";
         }

@@ -15,9 +15,10 @@
 <body>
 <header>
 <h1><a href="index.php">MiShop</a></h1>
+<a href="index.php"><i class="fas fa-chevron-circle-left"></i></a>
 </header>    
 
-
+<main class='resumen-carro'>
 <?php
     
     include_once 'funciones.php';
@@ -61,7 +62,7 @@
 
 ?>
 
-
+</main>
 
 </body>
 </html>

@@ -229,3 +229,42 @@ div.favoritos, .vistos{
    
 } */
 
+.resumen-carro{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+header{
+    margin-bottom: 1em;
+}
+
+.resumen{
+    width: 100%;
+    margin: 1.5em;
+    
+    border-radius: .2em;
+
+}
+
+.precioTotal{
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 1em;
+    background-color: white;
+    border-radius: .5em;
+}
+
+.precioTotal>p{
+    margin: .3em;
+    font-weight: bold;
+}
+
+.tramitarCompra, .eliminarTodo, .eliminarProducto {
+    margin: 1em;
+    padding: .8em;
+    border-radius: .4em;
+    background-color: white;
+    font-weight: bold;
+}
+
+
