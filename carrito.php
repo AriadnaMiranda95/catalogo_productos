@@ -28,9 +28,7 @@
    if(isset($_REQUEST['id'])) { // Comprobamos que el id exista // Comprobamos que nos pasan el id de un producto.
         $id = $_REQUEST['id']; // Introducimos dentro de la variable $id el id recogido de los productos.
         if(isset($_REQUEST['borrar'])){
-            unset($_SESSION['carrito'][$id]);
-
-            
+            unset($_SESSION['carrito'][$id]);  
 
         }else{
              $_SESSION['carrito'][$id] = $id; // Añadimos la propiedad carrito al array de $_SESSION y le decimos que el valor de la primera posición es el id del producto y su valor es igual al id de los productos.
@@ -40,9 +38,7 @@
    }else{
         chequearLogin(); // En primer lugar pondremos la fucion de chequearLogin ya que la primera condición es que ya hayamos iniciado sesión.
         if(isset($_SESSION['login']) && $_SESSION['login'] === true){ // Comprobamos que exista el login y que sea verdadero.
-           
             mostrarProductosCarrito($productos);
-            
         }else{
             //En caso de que no se cumpla la condición de que se haya iniciado sesión, entramos en éste else.
             mostrarLogin(); // Llamamos a la función mostrarLogin() que nos muestra el formulario de inicio de sesión. 
@@ -56,9 +52,6 @@
     unset($_SESSION['carrito']);
 }
  
-
- 
-
 
 ?>
 

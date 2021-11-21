@@ -16,5 +16,6 @@
         <h1>Usted ha rechazado la política de cookies</h1>
         <p>Lo sentimos, usted ha rechazado las cookies, con los cual no podrá acceder al contenido de ésta página. En caso de querer visualizar la web, por favor acepte las cookies.</p>
     </div>
+    
 </body>
 </html>

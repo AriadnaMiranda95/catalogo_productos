@@ -1,6 +1,5 @@
 <?php
   
-  //politicaCookies();
     session_start();
 
     function getDatos($fichero) {
@@ -35,8 +34,6 @@
     }
     
 
-   
-
     function politicaCookies() {
         echo "<div class='politicaCookies'>";
             echo "<h1> Uso de cookies</h1>";
@@ -47,8 +44,6 @@
             echo "</section>";
         echo "</div>";
     }
-
-
 
     function mostrarProducto($productos, $producto_id) {
         $producto = $productos[$producto_id];
@@ -66,7 +61,6 @@
         echo "</div>";
 
     }
-
 
     function contadorVisitas($idProducto) {
      
@@ -160,8 +154,6 @@
         }
     }
 
-
-
 // FUNCIONES CARRITO
 
     function mostrarProductosCarrito($productos) {
@@ -204,8 +196,6 @@
 
     // FUNCIONES TRAMITES
 
-
-
     function crearSelect($array,  $idOpcion,  $nombreOpcion, $nombreSelect, $label){
         echo "<section>";
         echo "<label for='{$nombreSelect}'>{$label}*</label>";
@@ -247,10 +237,7 @@
         echo "<input type='submit' value='Comprar' name='comprar' class='comprarProducto'>";
         echo "</section></fieldset></form>";
         
-       
-
     }
-
 
     
     // VALIDAR FORMULARIO DE TRAMITES

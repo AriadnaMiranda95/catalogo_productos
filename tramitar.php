@@ -24,7 +24,6 @@ $DATOS_OBLIGATORIOS = [
     "apellido1" => "",
     "apellido2" => "",
     "fijo" => "",
-    "indicacion" => "",
     "localidad" => "",
     "codigo_postal" => "",
     "nombre_via" => ""
@@ -32,7 +31,7 @@ $DATOS_OBLIGATORIOS = [
 
 
 
-if (isset($_POST) && !empty($_POST)){
+if (isset($_POST) && !empty($_POST)) {
     if(count(comprobarCamposVacios($DATOS_OBLIGATORIOS)) > 0) { // contamos el número de campos vacios que contiene el array que devuelve la función.
         mostrarFormulario($paises, $provincias, $tiposVia);
         cestaResumen($productos);
@@ -51,7 +50,7 @@ if (isset($_POST) && !empty($_POST)){
             cestaResumen($productos);
             $datosObligatorios = comprobarDatosObligatorios($DATOS_OBLIGATORIOS);
             echo "<div class='errores'>";
-            foreach($datosObligatorios as $dato){
+            foreach($datosObligatorios as $dato) {
                 echo $dato;
             }
             echo "</div>";
@@ -61,13 +60,10 @@ if (isset($_POST) && !empty($_POST)){
         
 
     }
-
-    
-    
+  
 
  }else{  
-  //  if(isset($_REQUEST["comprar"])) crearSeccion("Datos Obligatorios incompletos",comprobarCamposVacios($DATOS_OBLIGATORIOS));
-   
+
   mostrarFormulario($paises, $provincias, $tiposVia);
   cestaResumen($productos);
 

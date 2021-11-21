@@ -17,7 +17,6 @@
             mostrarProducto($productos, $_REQUEST["id"]);
             contadorVisitas($_REQUEST["id"]);
      
-
     ?>
 
 </body>

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(($_SESSION['usuario']) != 'usuario' || ($_SESSION['clave']) != 'clave'){
+    if(($_SESSION['usuario']) != 'usuario' || ($_SESSION['clave']) != 'clave') {
         header('Location: carrito.php');
     }
 
@@ -9,8 +9,6 @@
 
         $usuario = $_REQUEST['usuario'];
         $clave = $_REQUEST['clave'];
-
-        
 
         if($usuario == 'usuario' && $clave == 'clave') {
             $_SESSION['usuario'] = $usuario;

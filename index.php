@@ -16,7 +16,7 @@
 
 </head>
 <body>
-    <?php       include_once 'funciones.php';  ?>
+    <?php include_once 'funciones.php';  ?>
 
     <header>
           <h1>MiShop</h1>
@@ -28,34 +28,26 @@
           if(isset($_SESSION["login"])){
               echo "<a id='logOut'>Logout</a>";
           }
+
           ?>
           
-
     </header>
     
 
     <main>
         <article class="productos">
             <?php
-               // include_once 'funciones.php';
-                
-                
+        
                 if(!isset($_COOKIE["politica"])) {
                     politicaCookies();
                 }else{
                     
                     mostrarDatos($productos);
                 }
-
-                
-
                 
             ?>
         </article>
     
-
-
-
         <div class="politica_rechazada"> 
             <h1>Usted ha rechazado la política de cookies</h1>
             <p>Lo sentimos, usted ha rechazado las cookies, con los cual no podrá acceder al contenido de ésta página. En caso de querer visualizar la web, por favor acepte las cookies.</p>
@@ -74,11 +66,6 @@
             ?>
         </div>
 
-
-        
-
     </main>
-
-    
 </body>
 </html>
